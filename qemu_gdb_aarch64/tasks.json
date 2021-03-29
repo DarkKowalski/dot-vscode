@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cross-compile",
+            "type": "shell",
+            "command": "aarch64-linux-gnu-gcc",
+            "args": [
+                "--static",
+                "-Og",
+                "-g",
+                "-o",
+                "debug.out",
+                "source.c"
+            ]
+        },
+        {
+            "label": "qemu-aarch64",
+            "type": "shell",
+            "command": "qemu-aarch64",
+            "args": [
+                "-g",
+                "9999",
+                "./debug.out"
+            ],
+            "dependsOn": "cross-compile",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": ".",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": ".",
+                        "endsPattern": ".",
+                    }
+                }
+            ]
+        }
+    ]
+}
