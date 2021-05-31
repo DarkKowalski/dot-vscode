@@ -6,3 +6,6 @@ Files should be placed in `.vscode`
 
 - verilator
 - RVM Ruby C API
+- QEMU cross debugging
+- MRI development
+
